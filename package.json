@@ -4,7 +4,8 @@
   "description": "Chromium extension generator",
   "main": "index.js",
   "scripts": {
-    "make:extension": "node ./scripts/makeExtension.js"
+    "generate:extension": "node ./scripts/generateExtension.js",
+    "generate:icon": "sh -c 'python3 ./scripts/icon_generator.py \"$@\"' --"
   },
   "author": "Bogdan Sukmanov",
   "license": "MIT"
