@@ -4,8 +4,8 @@
   "description": "Chromium extension generator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "make:extension": "node ./scripts/makeExtension.js"
   },
-  "author": "bogdan sukmanov",
+  "author": "Bogdan Sukmanov",
   "license": "MIT"
 }
