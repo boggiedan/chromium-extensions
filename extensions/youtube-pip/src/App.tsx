@@ -1,5 +1,4 @@
 import React, { type FC } from "react";
-import "./index.css";
 
 const triggerPIP = () => {
   const playerContainer = document.querySelector("#movie_player");
