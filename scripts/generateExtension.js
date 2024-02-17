@@ -3,10 +3,8 @@ const fs = require('fs').promises;
 const path = require('path');
 const { exec } = require('child_process');
 
-// Import the example package.json content
 const examplePackageJson = require('./config/package.json'); // Adjust the path as necessary
 
-// Define the configuration files to be copied
 const configFiles = [
   '.babelrc',
   '.eslintrc.js',
@@ -16,16 +14,13 @@ const configFiles = [
   'webpack.config.js'
 ];
 
-// Define folders to be copied
 const foldersToCopy = ['public', 'src'];
 
-// Create readline interface for user input
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-// Function to recursively copy directories
 async function copyDirectory(src, dest) {
   await fs.mkdir(dest, { recursive: true });
   let entries = await fs.readdir(src, { withFileTypes: true });
@@ -40,7 +35,6 @@ async function copyDirectory(src, dest) {
   }
 }
 
-// Function to run yarn install
 function installDependencies(dirPath) {
   return new Promise((resolve, reject) => {
     exec('yarn install', { cwd: dirPath }, (error, stdout, stderr) => {
@@ -55,11 +49,10 @@ function installDependencies(dirPath) {
   });
 }
 
-// Ask the user for the extension name
 rl.question('Enter the name of the extension: ', async (extensionName) => {
   try {
     const dirPath = path.join(__dirname, '..', 'extensions', extensionName);
-    
+
     await fs.mkdir(dirPath, { recursive: true });
     await fs.writeFile(path.join(dirPath, 'package.json'), JSON.stringify({ ...examplePackageJson, name: extensionName }, null, 2));
 
@@ -73,7 +66,6 @@ rl.question('Enter the name of the extension: ', async (extensionName) => {
 
     console.log(`Extension '${extensionName}' has been created successfully. Installing dependencies...`);
 
-    // Run yarn install
     await installDependencies(dirPath);
 
     console.log('Dependencies installed successfully.');
