@@ -59,6 +59,7 @@ function installDependencies(dirPath) {
 rl.question('Enter the name of the extension: ', async (extensionName) => {
   try {
     const dirPath = path.join(__dirname, '..', 'extensions', extensionName);
+    
     await fs.mkdir(dirPath, { recursive: true });
     await fs.writeFile(path.join(dirPath, 'package.json'), JSON.stringify({ ...examplePackageJson, name: extensionName }, null, 2));
 
