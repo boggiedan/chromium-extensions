@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { exec } = require('child_process');
 
-const examplePackageJson = require('./config/package.json'); // Adjust the path as necessary
+const examplePackageJson = require('./config/package.json');
 
 const configFiles = [
   '.babelrc',
