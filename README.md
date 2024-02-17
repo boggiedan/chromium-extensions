@@ -46,6 +46,8 @@ To load your extension into Chrome:
 
 Included in the `scripts` folder is a Python-based icon generator tool, essential for creating icons for your extension. To use this tool, ensure that Python 3 is installed on your system.
 
+By default the generated `manifest.json` fil is expecting those icons under `./extensions/your-new-extension/public/images`. You would need to move them there.
+
 ### Usage
 
 The icon generator script transforms an image into various sizes suitable for a browser extension. To use the script, execute the following command:
