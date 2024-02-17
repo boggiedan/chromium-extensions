@@ -1,4 +1,4 @@
-# New Extension Creator
+# Small Chromium Extension creator
 
 ## Overview
 
