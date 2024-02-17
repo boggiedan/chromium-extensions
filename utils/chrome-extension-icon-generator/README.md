@@ -1,1 +1,0 @@
-# chrome-extension-icon-generator
