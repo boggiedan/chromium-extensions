@@ -1,8 +1,7 @@
 {
   "name": "youtube-pip",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Chromium extension to enable Picture-in-Picture mode on YouTube",
   "scripts": {
     "start": "webpack serve --mode development --open --hot",
     "build": "webpack --mode production"
