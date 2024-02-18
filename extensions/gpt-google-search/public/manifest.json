@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "permissions": ["activeTab", "scripting"],
+    "name": "Chat GPT search results",
+    "version": "1.0",
+    "icons": {
+      "16": "./popup/icon16.png",
+      "19": "./popup/icon19.png",
+      "32": "./popup/icon32.png",
+      "38": "./popup/icon38.png",
+      "48": "./popup/icon48.png",
+      "128": "./popup/icon128.png"
+    },
+    "action": {
+      "default_popup": "./popup/index.html",
+      "default_icon": {
+        "16": "./popup/icon16.png",
+        "19": "./popup/icon19.png",
+        "32": "./popup/icon32.png",
+        "38": "./popup/icon38.png",
+        "48": "./popup/icon48.png",
+        "128": "./popup/icon128.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://*.google.com/*",
+          "*://*.google.be/*",
+          "*://*.google.lu/*",
+          "*://*.google.fr/*"
+        ],
+        "js": ["./app/index.js"]
+      }
+    ]
+  }
+  

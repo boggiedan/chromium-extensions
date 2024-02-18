@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Defines the size of the pop up of the extension */
+html {
+    width: 500px;
+    height: 250px;
+}
