@@ -10,7 +10,7 @@ yarn generate:extension my-extension
 
 ## Getting Started with Your Extension
 
-After running `yarn make:extension`, navigate to the newly created extension directory. You'll find the essential structure in place, including configuration for TypeScript, Webpack, Babel, and TailwindCSS. Start by editing `App.tsx` to develop your extension's features.
+After running `yarn generate:extension`, navigate to the newly created extension directory. You'll find the essential structure in place, including configuration for TypeScript, Webpack, Babel, and TailwindCSS. Start by editing `App.tsx` to develop your extension's features.
 
 ### Development Scripts
 

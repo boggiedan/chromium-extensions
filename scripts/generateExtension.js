@@ -10,6 +10,7 @@ const configFiles = [
   '.eslintrc.js',
   'postcss.config.js',
   'prettier.config.js',
+  'tailwind.config.js',
   'tsconfig.json',
   'webpack.config.js'
 ];
