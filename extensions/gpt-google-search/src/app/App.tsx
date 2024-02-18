@@ -1,12 +1,25 @@
-import React, { type FC } from "react";
+import React, { useState, type FC } from "react";
+import ModalButton from "@app/components/ModalButton";
+import Modal from "@app/components/Modal";
 
 const App: FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   return (
-    <div className="fixed mt-5 flex w-full bg-slate-400">
-      <h1 className="mb-4 text-3xl font-bold text-white">
-        Chat GPT search results
-      </h1>
-    </div>
+    <>
+      {isModalVisible && (
+        <Modal
+          onClose={() => {
+            setIsModalVisible(false);
+          }}
+        />
+      )}
+      <ModalButton
+        onClick={() => {
+          setIsModalVisible(!isModalVisible);
+        }}
+      />
+    </>
   );
 };
 

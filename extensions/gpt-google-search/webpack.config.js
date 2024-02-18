@@ -27,19 +27,33 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
   },
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname),
+      '@app': path.resolve(__dirname, 'src/app'),
+      '@popup': path.resolve(__dirname, 'src/popup'),
+    },
     extensions: ['.tsx', '.ts', '.js', '.css'],
+    fallback: {
+      'process/browser': require.resolve('process/browser')
+    }
   },
   plugins: [
-    new webpack.ProvidePlugin(
-      {
-        process: 'process/browser',
-      }
-    ),
     new webpack.DefinePlugin({
       'process.env.ENV': `'${MODE}'`,
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

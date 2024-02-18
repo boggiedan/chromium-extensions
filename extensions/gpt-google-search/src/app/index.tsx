@@ -1,18 +1,10 @@
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { isInDevelopmentMode } from "@app/utils/envUtils";
 import "./index.css";
 
-let isAppInDevMode;
-
-try {
-  isAppInDevMode = process.env.ENV === "development";
-} catch (e) {
-  isAppInDevMode = false;
-} finally {
-  isAppInDevMode = false;
-}
-
+const isAppInDevMode = isInDevelopmentMode();
 const ROOT_ID = isAppInDevMode ? "root" : "gpt-google-search-root";
 
 const createRootElement = () => {
