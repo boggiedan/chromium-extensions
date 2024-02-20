@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCompletion } from "@app/services/openai";
+import { getCompletion } from "@/src/app/services/apigw";
 
 type ModalProps = {
   onClose: () => void;

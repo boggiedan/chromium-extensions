@@ -2,6 +2,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const baseConfig = require('./webpack.config.js');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const MODE = "development";
 
@@ -16,6 +19,8 @@ module.exports = (env) => {
     plugins: [
       new webpack.DefinePlugin({
         'process.env.ENV': `'${MODE}'`,
+        'process.env.API_URL': `'${process.env.API_URL}'`,
+        'process.env.API_KEY': `'${process.env.API_KEY}'`,
       }),
       new webpack.ProvidePlugin({
         process: 'process/browser',
