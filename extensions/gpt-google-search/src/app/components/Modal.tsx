@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { getCompletion } from "@/src/app/services/apigw";
+import React from "react";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type ModalProps = {
+  content: string;
   onClose: () => void;
 };
 
-const Modal = ({ onClose }: ModalProps) => {
-  const [completion, setCompletion] = useState({});
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await getCompletion();
-        setCompletion(response);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
-
+const Modal = ({ content, onClose }: ModalProps) => {
   return (
     <div
       className="relative z-10"
@@ -43,7 +32,9 @@ const Modal = ({ onClose }: ModalProps) => {
                 <path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"></path>
               </svg>
             </button>
-            <div className="mt-10">{JSON.stringify(completion || {})}</div>
+            <div className="mt-10 p-5">
+              <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
+            </div>
           </div>
         </div>
       </div>
