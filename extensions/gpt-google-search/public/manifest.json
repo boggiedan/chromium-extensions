@@ -1,6 +1,11 @@
 {
     "manifest_version": 3,
-    "permissions": ["tabs", "activeTab", "scripting"],
+    "permissions": [
+      "tabs", 
+      "activeTab",
+      "scripting",
+      "storage"
+    ],
     "name": "Chat GPT search results",
     "version": "1.0",
     "icons": {

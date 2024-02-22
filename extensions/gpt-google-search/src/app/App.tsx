@@ -18,6 +18,8 @@ const App: FC = () => {
   useEffect(() => {
     if (!isDev) {
       chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        console.log("MESSAGE RECEIVED: ", request);
+
         if (request.action === "GPT-SEARCH-ENABLED") {
           setIsEnabled(true);
           sendResponse({ result: "success" });

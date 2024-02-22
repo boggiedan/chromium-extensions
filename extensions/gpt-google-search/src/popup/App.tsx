@@ -7,7 +7,17 @@ const App = () => {
   const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
+    // Retrieve the stored state when the component mounts
+    chrome.storage.local.get(["isEnabled"], function (result) {
+      if (result.isEnabled !== undefined) {
+        setIsEnabled(result.isEnabled);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     if (!isDev) {
+      chrome.storage.local.set({ isEnabled: isEnabled });
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         const activeTab = tabs[0];
 
