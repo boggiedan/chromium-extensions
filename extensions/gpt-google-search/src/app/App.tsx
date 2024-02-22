@@ -5,9 +5,10 @@ import { isInDevelopmentMode } from "./utils/envUtils";
 import DevInput from "./components/DevInput";
 import { fetchSearchResult } from "./services/apigw";
 
-const isDevelopmentMode = isInDevelopmentMode();
+const isDev = isInDevelopmentMode();
 
 const App: FC = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [finalValue, setFinalValue] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -15,6 +16,26 @@ const App: FC = () => {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    if (!isDev) {
+      chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        if (request.action === "GPT-SEARCH-ENABLED") {
+          setIsEnabled(true);
+          sendResponse({ result: "success" });
+        }
+
+        if (request.action === "GPT-SEARCH-DISABLED") {
+          setIsEnabled(false);
+          sendResponse({ result: "success" });
+        }
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isEnabled) {
+      return;
+    }
+
     const handleInputChange = (event: InputEvent) => {
       if (event?.data) {
         setSearchValue((prev) => prev + event.data);
@@ -42,7 +63,7 @@ const App: FC = () => {
         clearTimeout(timer.current);
       }
     };
-  }, []);
+  }, [isEnabled]);
 
   useEffect(() => {
     if (searchValue) {
@@ -91,7 +112,7 @@ const App: FC = () => {
           setIsModalVisible(!isModalVisible);
         }}
       />
-      {isDevelopmentMode && <DevInput />}
+      {isDev && <DevInput />}
     </>
   );
 };
