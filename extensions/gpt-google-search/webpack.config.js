@@ -63,6 +63,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: './popup/index.html',
+      chunks: ['popup'],
     }),
     new CopyWebpackPlugin({
       patterns: [
