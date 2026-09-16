@@ -1,26 +1,32 @@
 {
-    "manifest_version": 3,
-    "permissions": ["activeTab", "scripting"],
-    "name": "YouTube Picture in Picture",
-    "version": "1.0",
-    "icons": {
+  "manifest_version": 3,
+  "permissions": ["activeTab", "scripting"],
+  "name": "YouTube Picture in Picture",
+  "version": "1.0",
+  "icons": {
+    "16": "icon16.png",
+    "19": "icon19.png",
+    "32": "icon32.png",
+    "38": "icon38.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_icon": {
       "16": "icon16.png",
       "19": "icon19.png",
       "32": "icon32.png",
       "38": "icon38.png",
       "48": "icon48.png",
       "128": "icon128.png"
-    },
-    "action": {
-      "default_popup": "index.html",
-      "default_icon": {
-        "16": "icon16.png",
-        "19": "icon19.png",
-        "32": "icon32.png",
-        "38": "icon38.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
-      }
     }
-  }
-  
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content/index.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
